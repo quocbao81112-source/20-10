@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>💖 Anh yêu em 💖</h1>
+  <p>Mỗi ngày bên em là một ngày hạnh phúc 🌹</p>
+
+  <div id="hearts"></div>
+
+  <audio autoplay loop>
+    <source src="love_song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+h1 {
+  color: #e91e63;
+  animation: pulse 2s infinite;
+}
+
+p {
+  font-size: 20px;
+  color: #880e4f;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 24px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  document.getElementById("hearts").appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
